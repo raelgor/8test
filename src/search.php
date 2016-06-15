@@ -1,13 +1,8 @@
 <?php
 $query = $_POST['q'];
 
-$tw = array(
-  "key" => $_CONFIG["twitter_key"],
-  "secret" => $_CONFIG["twitter_secret"]
-);
-
 $headers = array();
-$headers[] = "Authorization: Basic " . base64_encode($tw["key"] . ":" . $tw["secret"]);
+$headers[] = "Authorization: Basic " . base64_encode($_CONFIG["k"] . ":" . $_CONFIG["s"]);
 
 $data = array("grant_type" => "client_credentials");
 

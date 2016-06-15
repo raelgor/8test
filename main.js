@@ -13,9 +13,11 @@ const app = express();
 const http = require('http');
 const exec = require('child_process').exec;
 const chalk = require('chalk');
-var server;
+const minimist = require('minimist');
 
-const config = require('./config');
+global.opts = minimist(process.argv);
+
+var server;
 
 // ...
 // Omitting compression and caching routes
@@ -39,7 +41,7 @@ app.all('/', (req, res) =>
 // Really awkward way to do this, but it will work for this example :D
 app.post('/api/:call', (req, res) => {
   let postData = encodeURI(JSON.stringify(req.body));
-  let configData = encodeURI(JSON.stringify(config));
+  let configData = encodeURI(JSON.stringify(opts));
 
   let phpBootCode =
     `$_POST = (array)json_decode(rawurldecode('${postData}'));`+
@@ -53,6 +55,6 @@ app.post('/api/:call', (req, res) => {
 
 app.use(express.static('./static'));
 
-server = http.createServer(app).listen(config.port, config.bind);
+server = http.createServer(app).listen(opts.p, opts.h);
 
-server.on('listening', () => console.log(`${chalk.cyan('8test')} server up.`));
+server.on('listening', () => !opts.noout && console.log(`${chalk.cyan('8test')} server up.`));
