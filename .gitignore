@@ -1,0 +1,10 @@
+node_modules/*
+*.bat
+.vscode
+*.psd
+typings
+ssl
+config.js
+config.json
+jsconfig.json
+id

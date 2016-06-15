@@ -1,0 +1,86 @@
+::-moz-selection { background:gray; color:white; text-shadow: none; }
+::-webkit-selection { background:gray; color:white; text-shadow: none; }
+::selection { background:gray; color:white; text-shadow: none; }
+
+input:focus {
+  outline-color: gray;
+  transform: scale(1.1);
+}
+
+.logo, .tagline {
+  cursor: default;
+}
+
+* {
+  font-family: Open-Sans, sans-serif;
+}
+
+body, html {
+  margin: 0px;
+  background: #f7f7f7;
+  overflow-x: hidden;
+}
+
+.logo {
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 0px 1px white;
+    padding: 30px 0 10px 0;
+}
+
+.tagline {
+    text-shadow: 0 1px rgba(255, 255, 255, 0.74);
+    text-align: center;
+}
+
+.tagline span {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.search {
+    width: 320px;
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.tweet-pool > div {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.tweet-pool {
+  text-align: center;
+}
+
+.search input {
+    padding: 15px;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid gray;
+    box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.small-print {
+    font-size: 10px;
+    padding-top: 4px;
+}
+
+.small-print b {
+  display: inline-block;
+}
+
+.small-print a {
+  color: black;
+}

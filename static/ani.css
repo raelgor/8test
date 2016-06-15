@@ -1,0 +1,34 @@
+.ani02 {
+	transition-property: all;
+	transition-duration: 200ms;
+}
+
+.ani04 {
+	transition-property: all;
+	transition-duration: 400ms;
+}
+
+.spawn {
+  animation: spawn 500ms;
+}
+
+.wiggle {
+  animation: wiggle 5s infinite;
+}
+
+/* Note: Compatibility is not maximized in this example */
+
+@keyframes spawn {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(0deg); }
+  53% { transform: rotate(45deg); }
+  56% { transform: rotate(-45deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
