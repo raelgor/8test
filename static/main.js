@@ -97,6 +97,6 @@ window.twttr = (function(d, s, id) {
 
     });
 
-    // Passing in 'this' to make sure we get the global/module scope of the host
-    // of this code. Not really relevant to this example, just an old habit.
+// Passing in 'this' to make sure we get the global/module scope of the host
+// of this code. Not really relevant to this example, just an old habit.
 })(this);
