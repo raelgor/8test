@@ -36,9 +36,7 @@ window.twttr = (function(d, s, id) {
             // :hover always start with .no-touch
             document.querySelector('body').className = 'no-touch';
             noTouch = true;
-        } // We only want to immediately focus if an annoying keyboard won't pop
-        // up on the screen, aka we are not on a touch device.
-        document.querySelector('.no-touch .search input').focus();
+        }
 
         // Make search box available only when twitter sdk is loaded
         twttr.ready(enableSearch);
