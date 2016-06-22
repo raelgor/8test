@@ -1,4 +1,6 @@
 <?php
+$_CONFIG = (array)json_decode(file_get_contents('../config.json'));
+
 $query = $_POST['q'];
 
 $headers = array();

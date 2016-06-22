@@ -47,7 +47,7 @@ window.twttr = (function(d, s, id) {
             disableSearch();
             var request = new XMLHttpRequest();
 
-            request.open("POST", "/api/search", true);
+            request.open("POST", "search.php", true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
             request.onreadystatechange = function() {
@@ -58,11 +58,13 @@ window.twttr = (function(d, s, id) {
                     document.querySelector('.tweet-pool').innerHTML = '';
 
                     response.statuses.forEach(function(tweet) {
-                        var element = document.createElement('div');
-                        twttr.widgets.createTweet(tweet.id_str, element, { theme: 'light' })
-                        // cros bug workaround
-                        .then(function(){element.style.transform = 'scale(1)'});
-                        document.querySelector('.tweet-pool').appendChild(element);
+                      document.querySelector('.tweet-pool').innerHTML +=
+                        '<div class="spawn">' +
+                          '<a href="https://twitter.com/' + tweet.user.screen_name + '">@' +
+                            tweet.user.screen_name +
+                          '</a>' +
+                          '<div>' + htmlify(tweet.text) + '</div>' +
+                        '</div>';
                     });
 
                     enableSearch();
@@ -88,6 +90,14 @@ window.twttr = (function(d, s, id) {
             document.querySelector('.search input').blur();
         }
 
+        function htmlify(text) {
+          text = text.replace(/http[s]\:\/\/[^ ]+/g, function(a){ return '<a href="'+a+'">'+a+'</a>'; });
+          text = text.replace(/\@[a-zA-Z0-9_]+/g, function(a){ return '<a href="https://twitter.com/'+a+'">'+a+'</a>'; });
+          text = text.replace(/\#[a-zA-Z0-9_]+/g, function(a){ return '<a href="https://twitter.com/hashtag/'+a.replace(/\#/, '')+'">'+a+'</a>'; });
+
+          return text;
+        }
+
         // Fancy kids stuff
         console.log(
             '%c8test %cinitialized.',
@@ -95,6 +105,6 @@ window.twttr = (function(d, s, id) {
 
     });
 
-// Passing in 'this' to make sure we get the global/module scope of the host
-// of this code. Not really relevant to this example, just an old habit.
+    // Passing in 'this' to make sure we get the global/module scope of the host
+    // of this code. Not really relevant to this example, just an old habit.
 })(this);
